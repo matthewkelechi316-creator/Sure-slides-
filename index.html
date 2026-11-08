@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SureSlides</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">S</div><div><b>SureSlides</b><small>CHURCH PRESENTATION STUDIO</small></div></div>
+    <div class="top-actions"><span class="offline"><i></i> OFFLINE READY</span><button class="btn subtle" id="saveBtn">Save presentation</button><button class="btn primary" id="presentBtn">▶ Present</button></div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="side-heading">WORKSPACE</div>
+      <button class="nav active">▤ &nbsp; Presentation</button>
+      <button class="nav" id="songsNav">♫ &nbsp; Songs & Hymns</button>
+      <button class="nav" id="bibleNav">▣ &nbsp; Bible verses</button>
+      <button class="nav" id="annNav">▧ &nbsp; Announcements</button>
+      <div class="side-heading library-heading">SLIDE LIBRARY</div>
+      <div id="slideList" class="slide-list"></div>
+      <button class="add-slide" id="addSlide">＋ Add new slide</button>
+      <div class="sidebar-foot"><span class="avatar">SS</span><div><b>SureSlides Studio</b><small>Local workspace</small></div></div>
+    </aside>
+    <section class="editor">
+      <div class="section-top"><div><small class="eyebrow">CURRENT PRESENTATION</small><h1 id="presentationTitle">Sunday Service</h1></div><button class="btn subtle" id="renameBtn">✎ Rename</button></div>
+      <div class="canvas-wrap">
+        <div class="slide-canvas theme-worship" id="canvas">
+          <div class="canvas-content"><div class="cross">✝</div><div class="canvas-kicker">WELCOME TO</div><h2 id="previewTitle">SUNDAY<br>SERVICE</h2><div class="gold-line"></div><p id="previewBody">A time of worship, fellowship and the Word.</p><small class="canvas-footer">SURESLIDES PRESENTATION</small></div>
+        </div>
+      </div>
+      <div class="editor-tools"><span>SLIDE CONTENT</span><span class="hint">Changes update the preview automatically</span></div>
+      <label>Slide title<input id="titleInput" value="SUNDAY SERVICE"></label>
+      <label>Subtitle / message<textarea id="bodyInput" rows="2">A time of worship, fellowship and the Word.</textarea></label>
+      <div class="theme-row"><span>BACKGROUND STYLE</span><button class="swatch selected" data-theme="worship">Worship</button><button class="swatch" data-theme="midnight">Midnight</button><button class="swatch" data-theme="light">Light</button></div>
+    </section>
+    <aside class="right-panel">
+      <div class="panel-title">OUTPUT PREVIEW <span class="live-dot">● LIVE</span></div>
+      <div class="mini-screen"><div class="mini-cross">✝</div><b id="miniTitle">SUNDAY SERVICE</b><small id="miniBody">A time of worship, fellowship and the Word.</small></div>
+      <div class="output-card"><b>Audience display</b><p>Two local output windows are available: full-screen and transparent overlay. Native NDI transmission is the next integration layer.</p><span class="status">● Local output windows supported</span><button class="stop-output" id="stopOutput">■ Stop outputs</button></div>
+      <div class="quick-card"><b>Quick actions</b><button id="songQuick">♫ Add song or hymn</button><button id="verseQuick">▣ Add Bible verse</button><button id="announceQuick">▧ Add announcement</button></div>
+      <div class="tip"><b>TIP</b><p>Your work is stored locally in this browser profile when you save. No internet connection is required.</p></div>
+    </aside>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const b=document.getElementById("stopOutput");if(b)b.onclick=()=>window.sureSlides?.stopOutputs().then(()=>{const s=document.querySelector(".status");if(s)s.textContent="● Outputs stopped";});});</script></body>
+</html>
